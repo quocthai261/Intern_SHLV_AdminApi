@@ -8,7 +8,7 @@ using SDMS.Admin.Domain.Entities;
 
 namespace SDMS.Admin.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class SysMenusController : BaseCQController<SysMenu, QuerySysMenusDto, CreateSysMenusDto, UpdateSysMenusDto>
     {
