@@ -1,0 +1,4 @@
+dotnet ef dbcontext scaffold --no-build --project ..\SDMS.Admin.Infrastructure\SDMS.Admin.Infrastructure.csproj --startup-project ScaffoldStartup.csproj --configuration Debug "Data Source=10.14.138.23:1521/ORCL;User Id=SDMS;Password=12345678;" Oracle.EntityFrameworkCore --context AdminDbContext --context-dir DbContexts --force --output-dir ..\SDMS.Admin.Domain\Entities ^
+-t SysActivityLogs -t SysLanguage -t SysLocaleMessages -t SysMenus -t SysPermissions -t SysRoles -t SysSettings -t SysUserLoginHistories -t SysUsers -t SysVersions -t CatDistricts -t SysUserRoles -t SysMobileMenus  -t SysMobileMenus  -t SysUserPermission -t CatNationalities -t CatProvince -t CatWards -t CatBanks -t CatBankOrg
+
+pause;

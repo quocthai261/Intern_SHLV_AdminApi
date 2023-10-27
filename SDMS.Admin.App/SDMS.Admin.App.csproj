@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="CommandHandlers\CatProvince\**" />
+      <Compile Remove="Commands\CatProvince\**" />
+      <EmbeddedResource Remove="CommandHandlers\CatProvince\**" />
+      <EmbeddedResource Remove="Commands\CatProvince\**" />
+      <None Remove="CommandHandlers\CatProvince\**" />
+      <None Remove="Commands\CatProvince\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="EventHandlers\AgentMoveTypeCreatedEventHandler.cs" />
+      <Compile Remove="EventHandlers\UserCreatedEventHandler.cs" />
+      <Compile Remove="Events\AgentMoveTypeCreated.cs" />
+      <Compile Remove="Events\UserCreated.cs" />
+      <Compile Remove="Queries\MenuItemQuery.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SDMS.Admin.Domain\SDMS.Admin.Domain.csproj" />
+      <ProjectReference Include="..\SDMS.Admin.Infrastructure\SDMS.Admin.Infrastructure.csproj" />
+
+    </ItemGroup>
+
+	<ItemGroup>
+    <Reference Include="PB22.Extend.Api">
+      <HintPath>..\dlls\PB22.Extend.Api.dll</HintPath>
+    </Reference>
+	</ItemGroup>
+
+
+</Project>

@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.1.0" />
+        <PackageReference Include="Autofac.Configuration" Version="6.0.0" />
+        <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="Destructurama.Attributed" Version="3.1.0" />
+        <PackageReference Include="MassTransit.MongoDb" Version="8.0.16" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.16" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.12" />
+		<PackageReference Include="Minio" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="7.0.10" />
+        <PackageReference Include="PB22.Core.Api" Version="1.0.8" />
+        <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+        <PackageReference Include="Serilog.Exceptions.EntityFrameworkCore" Version="8.4.0" />
+        <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.2" />
+        <PackageReference Include="Serilog.Sinks.Slack" Version="2.2.2" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+		<PackageReference Include="DevExtreme.AspNet.Data" Version="3.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SDMS.Admin.App\SDMS.Admin.App.csproj" />
+      <ProjectReference Include="..\SDMS.Admin.Infrastructure\SDMS.Admin.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SDMS.Admin.App\SDMS.Admin.App.csproj" />
+      <ProjectReference Include="..\SDMS.Admin.Infrastructure\SDMS.Admin.Infrastructure.csproj" />
+      <ProjectReference Include="..\SDMS.Admin.Resources\SDMS.Admin.Resources.csproj" />
+    </ItemGroup>
+	
+	<ItemGroup>
+    <Reference Include="PB22.Extend.Api">
+      <HintPath>..\dlls\PB22.Extend.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="PB22.Extend.Authentication">
+      <HintPath>..\dlls\PB22.Extend.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="PB22.Extend.Domain">
+      <HintPath>..\dlls\PB22.Extend.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="PB22.Extensions.Localization.Json">
+      <HintPath>..\dlls\PB22.Extensions.Localization.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PB22.Extensions.Minio">
+      <HintPath>..\dlls\PB22.Extensions.Minio.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
