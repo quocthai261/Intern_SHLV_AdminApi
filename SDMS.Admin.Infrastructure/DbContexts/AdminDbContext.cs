@@ -17,7 +17,216 @@ public partial class AdminDbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //modelBuilder.HasDefaultSchema("SDMS");
+        modelBuilder.Entity<SysRole>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysRolesPk");
+            entity.ToTable("SysRoles");
 
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.ConCurrencyStamp).HasMaxLength(500);
+            entity.Property(e => e.Name).HasMaxLength(256);
+            entity.Property(e => e.NormalizedName).HasMaxLength(256);
+            entity.Property(e => e.Code)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .IsRequired();
+            entity.Property(e => e.IsSystem).HasPrecision(1).IsRequired();
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+        });
+        modelBuilder.Entity<SysPermission>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysPermissionsPk");
+            entity.ToTable("SysPermissions");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.PermissionName).HasMaxLength(256);
+            entity.Property(e => e.Description).HasMaxLength(256);
+            entity.Property(e => e.Type).HasPrecision(10);
+            entity.Property(e => e.Application)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ParentId).HasPrecision(19);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.IsPermisstion).HasPrecision(1);
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+        });
+        modelBuilder.Entity<SysSetting>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysSettingsPk");
+            entity.ToTable("SysSettings");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.GroupSetting).HasMaxLength(50);
+            entity.Property(e => e.SettingCode).HasMaxLength(50);
+            entity.Property(e => e.SettingName).HasMaxLength(100);
+            entity.Property(e => e.SettingValue).HasMaxLength(100);
+            entity.Property(e => e.SettingDesciption).HasMaxLength(200);
+            entity.Property(e => e.IsActive).HasPrecision(1).IsRequired();
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+        });
+        modelBuilder.Entity<SysMobileMenu>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysMobileMenusPk");
+            entity.ToTable("SysMobileMenus");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.Code).HasMaxLength(50).IsUnicode(false);
+            entity.Property(e => e.Name).HasMaxLength(256);
+            entity.Property(e => e.IsActive).HasPrecision(1).HasDefaultValueSql("1");
+            entity.Property(e => e.IsDefault).HasPrecision(1).HasDefaultValueSql("1");
+            entity.Property(e => e.Order_).HasPrecision(19).HasDefaultValueSql("0");
+            entity.Property(e => e.Icon1).HasMaxLength(256);
+            entity.Property(e => e.Icon2).HasMaxLength(50);
+            entity.Property(e => e.Color1).HasMaxLength(8).IsUnicode(false);
+            entity.Property(e => e.Color2).HasMaxLength(8).IsUnicode(false);
+            entity.Property(e => e.Color3).HasMaxLength(8).IsUnicode(false);
+            entity.Property(e => e.ParentId).HasMaxLength(200).IsUnicode(false);
+            entity.Property(e => e.PermissionName).HasMaxLength(500);
+
+            entity.Property(e => e.IsFavoriteDefault).HasPrecision(1).HasDefaultValueSql("0"); ;
+            entity.Property(e => e.FavoriteIndex).HasPrecision(8);
+            entity.Property(e => e.IsInstantPush).HasPrecision(1).HasDefaultValueSql("0").IsRequired();
+            entity.Property(e => e.SetInstantPush).HasPrecision(1).HasDefaultValueSql("0").IsRequired();
+            entity.Property(e => e.InstantPushId).HasPrecision(19);
+
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+        });
+        modelBuilder.Entity<SysLocaleMessage>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysLocaleMessagesPk");
+            entity.ToTable("SysLocaleMessages");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.LanguageId).HasPrecision(19).IsRequired();
+            entity.Property(e => e.MessageName).HasMaxLength(200).IsRequired().IsUnicode(false);
+            entity.Property(e => e.MessageValue).HasMaxLength(500).IsRequired();
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+        });
+        modelBuilder.Entity<SysApplication>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysApplicationPk");
+            entity.ToTable("SysApplication");
+
+            entity.Property(e => e.Id).HasMaxLength(50).IsUnicode(false);
+            entity.Property(e => e.SysApplicationName).HasMaxLength(50).IsUnicode(false);
+            entity.Property(e => e.Index).HasPrecision(8);
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+        });
+        modelBuilder.Entity<SyncJob>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SyncJobsPk");
+            entity.ToTable("SyncJobs");
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.ScheduleTypeId).HasPrecision(19).IsRequired();
+            entity.Property(e => e.ScheduleDescription).HasMaxLength(1024);
+            entity.Property(e => e.Description).HasMaxLength(1024);
+            entity.Property(e => e.LastRun).HasColumnType("DATE");
+            entity.Property(e => e.NextRun).HasColumnType("DATE");
+            entity.Property(e => e.Enable).HasPrecision(1).HasDefaultValueSql("1");
+            entity.Property(e => e.Valid).HasPrecision(1).HasDefaultValueSql("1");
+            entity.Property(e => e.JobIsRunning).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.ComplexPriority).HasPrecision(2);
+            entity.Property(e => e.ForceRun).HasPrecision(1).HasDefaultValueSql("0");
+
+
+        });
+        modelBuilder.Entity<SysActivityLog>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysActivityLogsPk");
+            entity.ToTable("SysActivityLogs");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.UserName).HasMaxLength(50);
+            entity.Property(e => e.Service).HasMaxLength(50).IsRequired();
+            entity.Property(e => e.IpAddress).HasMaxLength(50);
+            entity.Property(e => e.Client).HasMaxLength(300);
+            entity.Property(e => e.Host).HasMaxLength(50);
+            entity.Property(e => e.Time).HasColumnType("DATE").IsRequired();
+            entity.Property(e => e.CustomData).HasMaxLength(2000);
+            entity.Property(e => e.State).HasPrecision(1);
+            entity.Property(e => e.Action).HasMaxLength(2000);
+            entity.Property(e => e.Duration).HasPrecision(19);
+            entity.Property(e => e.Source).HasMaxLength(30);
+            entity.Property(e => e.Device).HasMaxLength(30);
+            entity.Property(e => e.Brand).HasMaxLength(30);
+            entity.Property(e => e.Model).HasMaxLength(30);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.Os).HasMaxLength(30);
+            entity.Property(e => e.Provider).HasMaxLength(50);
+            entity.Property(e => e.Parameters).HasColumnType("CLOB");
+        });
+        modelBuilder.Entity<SysLanguage>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysLanguagePk");
+            entity.ToTable("SysLanguage");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.LanguageCulture).HasMaxLength(20).IsRequired();
+            entity.Property(e => e.FlagImageFileName).HasMaxLength(50);
+            entity.Property(e => e.DisplayOrder).HasPrecision(3);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+        modelBuilder.Entity<SysUserLoginHistory>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysUserLoginHistoriesPk");
+            entity.ToTable("SysUserLoginHistories");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.UserName).HasMaxLength(50);
+            entity.Property(e => e.FullName).HasMaxLength(50);
+            entity.Property(e => e.LoginDate).HasColumnType("DATE");
+            entity.Property(e => e.Browser).HasMaxLength(256);
+            entity.Property(e => e.Device).HasMaxLength(50);
+            entity.Property(e => e.IpAddress).HasMaxLength(50);
+            entity.Property(e => e.Status).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+        //pdk-
+        modelBuilder.HasSequence("SeqSysRoles");
+        modelBuilder.HasSequence("SeqSysPermissions");
+        modelBuilder.HasSequence("SeqSysMobileMenus");
+        modelBuilder.HasSequence("SeqSysSettings");
+        modelBuilder.HasSequence("SeqSysLocaleMessages");
+        modelBuilder.HasSequence("SeqSysApplication");
+        modelBuilder.HasSequence("SeqSyncJobs");
+        modelBuilder.HasSequence("SeqSysActivityLogs");
+        modelBuilder.HasSequence("SeqSysLanguague");
+        modelBuilder.HasSequence("SeqSysUserLoginHistories");
+
+        //thai
         modelBuilder.Entity<CatProvince>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("CatProvincePk");
@@ -202,6 +411,9 @@ public partial class AdminDbContext
         });
 
         modelBuilder.HasSequence("SeqCatRelations");
+
+
+        //
 
         modelBuilder.Entity<SysMenu>(entity =>
             {

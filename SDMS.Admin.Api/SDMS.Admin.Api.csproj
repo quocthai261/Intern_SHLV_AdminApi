@@ -41,11 +41,17 @@
     <Reference Include="PB22.Extend.Api">
       <HintPath>..\dlls\PB22.Extend.Api.dll</HintPath>
     </Reference>
+    <Reference Include="PB22.Extend.Api.Data">
+      <HintPath>..\dlls\PB22.Extend.Api.Data.dll</HintPath>
+    </Reference>
     <Reference Include="PB22.Extend.Authentication">
       <HintPath>..\dlls\PB22.Extend.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="PB22.Extend.Domain">
       <HintPath>..\dlls\PB22.Extend.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="PB22.Extensions.Api.NetClient">
+      <HintPath>..\dlls\PB22.Extensions.Api.NetClient.dll</HintPath>
     </Reference>
     <Reference Include="PB22.Extensions.Localization.Json">
       <HintPath>..\dlls\PB22.Extensions.Localization.Json.dll</HintPath>
