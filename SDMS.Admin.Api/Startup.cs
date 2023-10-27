@@ -29,10 +29,11 @@ using Minio;
 using SDMS.Admin.Domain.Entities;
 using PB22.Extend.Api.Features;
 using SDMS.Admin.App.Commands;
+using SDMS.Admin.App.Dtos;
+using Microsoft.AspNetCore.Http.HttpResults;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using SDMS.Admin.App.Dtos.SysMenus;
 using SDMS.Admin.Api.Dtos.CatProvince;
-using SDMS.Admin.App.Services;
-using SDMS.Admin.App.QueryExpressions;
-using SDMS.Admin.App.Dtos.CatNationality;
 using SDMS.Admin.App.Dtos.CatDistrict;
 using SDMS.Admin.App.Dtos.CatWard;
 using SDMS.Admin.App.Dtos.CatGender;
@@ -40,7 +41,16 @@ using SDMS.Admin.App.Dtos.CatBank;
 using SDMS.Admin.App.Dtos.CatBankBranch;
 using SDMS.Admin.App.Dtos.CatCustomerType;
 using SDMS.Admin.App.Dtos.CatRelation;
-using SDMS.Admin.App.Dtos.SysMenus;
+using SDMS.Admin.App.Dtos.SyncJob;
+using SDMS.Admin.App.Dtos.SysApplication;
+using SDMS.Admin.App.Dtos.SysLanguage;
+using SDMS.Admin.App.Dtos.SysLocaleMessage;
+using SDMS.Admin.App.Dtos.SysMobileMenu;
+using SDMS.Admin.App.Dtos.SysUserLoginHistory;
+using SDMS.Admin.App.Dtos.SysSetting;
+using SDMS.Admin.App.Dtos.SysRole;
+using SDMS.Admin.App.Dtos.SysPermission;
+using SDMS.Admin.App.Dtos.CatNationality;
 //#if !DEBUG
 //using FIS.Agency.Api.Middlewares;
 //#endif
@@ -251,6 +261,18 @@ namespace SDMS.Admin.Api
             services.AddBaseControllerHandlers<CatBankBranch, QueryCatBankBranchDto, CreateCatBankBranchDto, UpdateCatBankBranchDto>();
             services.AddBaseControllerHandlers<CatCustomerType, QueryCatCustomerTypeDto, CreateCatCustomerTypeDto, UpdateCatCustomerTypeDto>();
             services.AddBaseControllerHandlers<CatRelation, QueryCatRelationDto, CreateCatRelationDto, UpdateCatRelationDto>();
+
+            services.AddBaseControllerHandlers < SyncJob, QuerySyncJobDto, CreateSyncJobDto, UpdateSyncJobDto > ();
+            services.AddBaseControllerHandlers < SysApplication, QuerySysApplicationDto, CreateSysApplicationDto, UpdateSysApplicationDto > ();
+            services.AddBaseControllerHandlers < SysLanguage, QuerySysLanguageDto, CreateSysLanguageDto, UpdateSysLanguageDto > ();
+            services.AddBaseControllerHandlers < SysLocaleMessage, QuerySysLocaleMessageDto, CreateSysLocaleMessageDto, UpdateSysLocaleMessageDto > ();
+            services.AddBaseControllerHandlers < SysMenu, QuerySysMenusDto, CreateSysMenusDto, UpdateSysMenusDto > ();
+            services.AddBaseControllerHandlers < SysMobileMenu, QuerySysMobileMenuDto, CreateSysMobileMenuDto, UpdateSysMobileMenuDto > ();
+            services.AddBaseControllerHandlers < SysPermission, QuerySysPermissionDto, CreateSysPermissionDto, UpdateSysPermissionDto > ();
+            services.AddBaseControllerHandlers < SysRole, QuerySysRoleDto, CreateSysRoleDto, UpdateSysRoleDto > ();
+            services.AddBaseControllerHandlers < SysSetting, QuerySysSettingDto, CreateSysSettingDto, UpdateSysSettingDto > ();
+            services.AddBaseControllerHandlers < SysUserLoginHistory, QuerySysUserLoginHistoryDto, CreateSysUserLoginHistoryDto, UpdateSysUserLoginHistoryDto > ();
+
         }
 
         public static void AddStorage(this IServiceCollection services, IConfiguration configuration)
