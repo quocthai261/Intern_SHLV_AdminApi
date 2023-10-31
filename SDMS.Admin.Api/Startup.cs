@@ -53,6 +53,8 @@ using SDMS.Admin.App.Dtos.SysPermission;
 using SDMS.Admin.App.Dtos.CatNationality;
 using SDMS.Admin.App.QueryExpressions;
 using SDMS.Admin.App.Services;
+using SDMS.Admin.App.Dtos.SysUserInformation;
+using SDMS.Admin.App.Dtos.SysUser;
 //#if !DEBUG
 //using FIS.Agency.Api.Middlewares;
 //#endif
@@ -274,6 +276,11 @@ namespace SDMS.Admin.Api
             services.AddBaseControllerHandlers < SysRole, QuerySysRoleDto, CreateSysRoleDto, UpdateSysRoleDto > ();
             services.AddBaseControllerHandlers < SysSetting, QuerySysSettingDto, CreateSysSettingDto, UpdateSysSettingDto > ();
             services.AddBaseControllerHandlers < SysUserLoginHistory, QuerySysUserLoginHistoryDto, CreateSysUserLoginHistoryDto, UpdateSysUserLoginHistoryDto > ();
+
+            //pdk-
+            services.AddBaseControllerHandlers<SysUserInformation, QuerySysUserInformationDto, CreateSysUserInformationDto, UpdateSysUserInformationDto>();
+            services.AddBaseControllerHandlers<SysUser, QuerySysUserDto, CreateSysUserDto, UpdateSysUserDto>();
+            //pdk-end
 
         }
 

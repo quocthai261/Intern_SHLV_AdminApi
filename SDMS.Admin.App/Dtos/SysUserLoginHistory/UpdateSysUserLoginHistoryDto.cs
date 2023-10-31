@@ -17,6 +17,6 @@ namespace SDMS.Admin.App.Dtos.SysUserLoginHistory
         public string? IpAddress { get; set; }
         public bool? Status { get; set; }
         public DateTime? LastUpdatedDate { get; set; }
-        public decimal? LastUpdatedBy { get; set; }
+        public long? LastUpdatedBy { get; set; }
     }
 }

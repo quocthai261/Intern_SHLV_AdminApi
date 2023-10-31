@@ -214,7 +214,6 @@ public partial class AdminDbContext
             entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
             entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
         });
-        //pdk-
         modelBuilder.HasSequence("SeqSysRoles");
         modelBuilder.HasSequence("SeqSysPermissions");
         modelBuilder.HasSequence("SeqSysMobileMenus");
@@ -225,8 +224,6 @@ public partial class AdminDbContext
         modelBuilder.HasSequence("SeqSysActivityLogs");
         modelBuilder.HasSequence("SeqSysLanguague");
         modelBuilder.HasSequence("SeqSysUserLoginHistories");
-
-        //thai
         modelBuilder.Entity<CatProvince>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("CatProvincePk");
@@ -412,9 +409,6 @@ public partial class AdminDbContext
 
         modelBuilder.HasSequence("SeqCatRelations");
 
-
-        //
-
         modelBuilder.Entity<SysMenu>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("SysMenusPk");
@@ -459,6 +453,62 @@ public partial class AdminDbContext
                     .IsRequired()
                     .HasMaxLength(300);
             });
+
+        //pdk-
+
+        modelBuilder.Entity<SysUserInformation>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysUserInformationsPk");
+            entity.ToTable("SysUserInformations");
+
+            entity.Property(e => e.Id).HasPrecision(19).IsRequired();
+            entity.Property(e => e.UserId).HasPrecision(19).IsRequired();
+            entity.Property(e => e.IdentificationNumber).HasPrecision(19).IsRequired();
+            entity.Property(e => e.Gender).HasMaxLength(1);
+            entity.Property(e => e.DayOfBirth).HasColumnType("DATE");
+            entity.Property(e => e.Address).HasMaxLength(256);
+            entity.Property(e => e.Status).HasPrecision(2);
+            entity.Property(e => e.JoiningDate).HasColumnType("DATE");
+            entity.Property(e => e.ResignationDate).HasColumnType("DATE");
+            entity.Property(e => e.Degree).HasMaxLength(50);
+            entity.Property(e => e.Major).HasMaxLength(50);
+            entity.Property(e => e.DegreeClassification).HasMaxLength(15);
+            entity.Property(e => e.ImageIdentificationFront).HasMaxLength(256);
+            entity.Property(e => e.ImageIdentificationBack).HasMaxLength(256);
+            entity.Property(e => e.ImageDegree).HasMaxLength(256);
+            entity.Property(e => e.ImageHealthCertification).HasMaxLength(256);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+        modelBuilder.Entity<SysUser>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("SysUsersPk");
+            entity.ToTable("SysUsers");
+
+            entity.Property(e => e.Id).HasPrecision(19).IsRequired();
+            entity.Property(e => e.ReferentId).HasMaxLength(64).IsUnicode(false);
+            entity.Property(e => e.UserName).HasMaxLength(256).IsRequired();
+            entity.Property(e => e.UserType).HasPrecision(2).IsRequired();
+            entity.Property(e => e.UserRule).HasPrecision(2).IsRequired();
+            entity.Property(e => e.Provider).HasMaxLength(16);  
+            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.SurName).HasMaxLength(100);
+            entity.Property(e => e.Email).HasMaxLength(100);
+            entity.Property(e => e.PhoneNumber).HasMaxLength(16);
+            entity.Property(e => e.LastLogin).HasColumnType("DATE");
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqSysUsers");
+
+        modelBuilder.HasSequence("SeqSysUserInformations");
+
+        //pdk-end
 
         modelBuilder.HasSequence("SeqCatProvince");
         modelBuilder.HasSequence("SeqSysMenus");

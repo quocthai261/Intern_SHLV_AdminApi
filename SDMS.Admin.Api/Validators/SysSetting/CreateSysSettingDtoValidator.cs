@@ -6,10 +6,10 @@ using SDMS.Admin.Resources;
 
 namespace SDMS.Admin.Api.Validators.SysSetting
 {
-    public class CreateSysSettingsDtoValidator : BaseValidator<CreateSysSettingDto>
+    public class CreateSysSettingDtoValidator : BaseValidator<CreateSysSettingDto>
     {
         private readonly IStringLocalizer<SharedResource> _localizer;
-        public CreateSysSettingsDtoValidator(IStringLocalizer<SharedResource> localizer)
+        public CreateSysSettingDtoValidator(IStringLocalizer<SharedResource> localizer)
         {
             _localizer = localizer;
             RuleFor(x => x.IsActive).NotEmpty().WithMessage(_localizer["Loi bat buoc IsActive"]);

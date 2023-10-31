@@ -17,8 +17,8 @@ namespace SDMS.Admin.Domain.Entities
         public string? IpAddress { get; set; }
         public bool? Status { get; set; }
         public DateTime? CreationDate { get; set; }
-        public decimal? CreatedBy { get; set; }
+        public long? CreatedBy { get; set; }
         public DateTime? LastUpdatedDate { get; set; }
-        public decimal? LastUpdatedBy { get; set; }
+        public long? LastUpdatedBy { get; set; }
     }
 }
