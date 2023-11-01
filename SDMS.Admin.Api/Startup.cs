@@ -55,9 +55,22 @@ using SDMS.Admin.App.QueryExpressions;
 using SDMS.Admin.App.Services;
 using SDMS.Admin.App.Dtos.SysUserInformation;
 using SDMS.Admin.App.Dtos.SysUser;
-//#if !DEBUG
-//using FIS.Agency.Api.Middlewares;
-//#endif
+using SDMS.Admin.App.Dtos.CatHospital;
+using SDMS.Admin.App.Dtos.CatCertiType;
+using SDMS.Admin.App.Dtos.CatChargeMode;
+using SDMS.Admin.App.Dtos.CatClaimStatus;
+using SDMS.Admin.App.Dtos.CatClaimType;
+using SDMS.Admin.App.Dtos.CatCommon;
+using SDMS.Admin.App.Dtos.CatDiagnosis;
+using SDMS.Admin.App.Dtos.CatDiagnosisGroup;
+using SDMS.Admin.App.Dtos.CatDocumentType;
+using SDMS.Admin.App.Dtos.CatEmailTemplate;
+using SDMS.Admin.App.Dtos.CatFinancialAnalysisConfig;
+using SDMS.Admin.App.Dtos.CatIncome;
+using SDMS.Admin.App.Dtos.CatMarriage;
+using SDMS.Admin.App.Dtos.CatOccupationGroup;
+using SDMS.Admin.App.Dtos.CatOccupation;
+using SDMS.Admin.App.Dtos.CatOfficeBranch;
 
 namespace SDMS.Admin.Api
 {
@@ -267,6 +280,22 @@ namespace SDMS.Admin.Api
             services.AddBaseControllerHandlers<CatBankBranch, QueryCatBankBranchDto, CreateCatBankBranchDto, UpdateCatBankBranchDto>();
             services.AddBaseControllerHandlers<CatCustomerType, QueryCatCustomerTypeDto, CreateCatCustomerTypeDto, UpdateCatCustomerTypeDto>();
             services.AddBaseControllerHandlers<CatRelation, QueryCatRelationDto, CreateCatRelationDto, UpdateCatRelationDto>();
+            services.AddBaseControllerHandlers<CatHospital, QueryCatHospitalDto, CreateCatHospitalDto, UpdateCatHospitalDto>();
+            services.AddBaseControllerHandlers<CatCertiType, QueryCatCertiTypeDto, CreateCatCertiTypeDto, UpdateCatCertiTypeDto>();
+            services.AddBaseControllerHandlers<CatChargeMode, QueryCatChargeModeDto, CreateCatChargeModeDto, UpdateCatChargeModeDto>();
+            services.AddBaseControllerHandlers<CatClaimStatus, QueryCatClaimStatusDto, CreateCatClaimStatusDto, UpdateCatClaimStatusDto>();
+            services.AddBaseControllerHandlers<CatClaimType, QueryCatClaimTypeDto, CreateCatClaimTypeDto, UpdateCatClaimTypeDto>();
+            services.AddBaseControllerHandlers<CatCommon, QueryCatCommonDto, CreateCatCommonDto, UpdateCatCommonDto>();
+            services.AddBaseControllerHandlers<CatDiagnosis, QueryCatDiagnosisDto, CreateCatDiagnosisDto, UpdateCatDiagnosisDto>();
+            services.AddBaseControllerHandlers<CatDiagnosisGroup, QueryCatDiagnosisGroupDto, CreateCatDiagnosisGroupDto, UpdateCatDiagnosisGroupDto>();
+            services.AddBaseControllerHandlers<CatDocumentType, QueryCatDocumentTypeDto, CreateCatDocumentTypeDto, UpdateCatDocumentTypeDto>();
+            services.AddBaseControllerHandlers<CatEmailTemplate, QueryCatEmailTemplateDto, CreateCatEmailTemplateDto, UpdateCatEmailTemplateDto>();
+            services.AddBaseControllerHandlers<CatFinancialAnalysisConfig, QueryCatFinancialAnalysisConfigDto, CreateCatFinancialAnalysisConfigDto, UpdateCatFinancialAnalysisConfigDto>();
+            services.AddBaseControllerHandlers<CatIncome, QueryCatIncomeDto, CreateCatIncomeDto, UpdateCatIncomeDto>();
+            services.AddBaseControllerHandlers<CatMarriage, QueryCatMarriageDto, CreateCatMarriageDto, UpdateCatMarriageDto>();
+            services.AddBaseControllerHandlers<CatOccupationGroup, QueryCatOccupationGroupDto, CreateCatOccupationGroupDto, UpdateCatOccupationGroupDto>();
+            services.AddBaseControllerHandlers<CatOccupation, QueryCatOccupationDto, CreateCatOccupationDto, UpdateCatOccupationDto>();
+            services.AddBaseControllerHandlers<CatOfficeBranch, QueryCatOfficeBranchDto, CreateCatOfficeBranchDto, UpdateCatOfficeBranchDto>();
 
             services.AddBaseControllerHandlers < SyncJob, QuerySyncJobDto, CreateSyncJobDto, UpdateSyncJobDto > ();
             services.AddBaseControllerHandlers < SysApplication, QuerySysApplicationDto, CreateSysApplicationDto, UpdateSysApplicationDto > ();

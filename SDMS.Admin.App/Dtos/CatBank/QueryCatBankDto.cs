@@ -8,19 +8,19 @@ namespace SDMS.Admin.App.Dtos.CatBank
 {
     public class QueryCatBankDto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string BankOrgName { get; set; }
 
         public string BankOrgCode { get; set; }
 
-        public int? IdType { get; set; }
+        public long? IdType { get; set; }
 
-        public string IdNumber { get; set; }
+        public string? IdNumber { get; set; }
 
-        public string AbbrName { get; set; }
+        public string? AbbrName { get; set; }
 
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         public bool? IsActive { get; set; }
 

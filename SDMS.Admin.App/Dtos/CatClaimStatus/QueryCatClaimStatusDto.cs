@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SDMS.Admin.App.Dtos.CatBank
+namespace SDMS.Admin.App.Dtos.CatClaimStatus
 {
-    public class UpdateCatBankDto
+    public class QueryCatClaimStatusDto
     {
         public long Id { get; set; }
-        public string BankOrgName { get; set; }
-        public string BankOrgCode { get; set; }
+        public string ClaimStatusName { get; set; }
+        public string ClaimStatusNameVN { get; set; }
         public bool? IsActive { get; set; }
+        public DateTime? CreationDate { get; set; }
+        public long? CreatedBy { get; set; }
         public DateTime? LastUpdatedDate { get; set; }
-
         public long? LastUpdatedBy { get; set; }
     }
 }

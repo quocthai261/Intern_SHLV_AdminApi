@@ -4,23 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SDMS.Admin.Domain.Entities
+namespace SDMS.Admin.App.Dtos.CatHospital
 {
-    public partial class CatBank
+    public class QueryCatHospitalDto
     {
         public long Id { get; set; }
 
-        public string BankOrgName { get; set; }
+        public string? HospitalCode { get; set; }
 
-        public string BankOrgCode { get; set; }
+        public string? HospitalNameEng { get; set; }
 
-        public long? IdType { get; set; }
-
-        public string? IdNumber { get; set; }
-
-        public string? AbbrName { get; set; }
-
-        public string? Status { get; set; }
+        public string? HospitalNameVie { get; set; }
 
         public bool? IsActive { get; set; }
 
@@ -31,5 +25,7 @@ namespace SDMS.Admin.Domain.Entities
         public DateTime? LastUpdatedDate { get; set; }
 
         public long? LastUpdatedBy { get; set; }
+
+        public long? AddressId { get; set; }
     }
 }

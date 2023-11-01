@@ -10,7 +10,7 @@ namespace SDMS.Admin.App.Dtos.CatBankBranch
     {
         public string BranchCode { get; set; }
 
-        public string InternalCode { get; set; }
+        public string longernalCode { get; set; }
 
         public string BranchName { get; set; }
 
@@ -22,11 +22,11 @@ namespace SDMS.Admin.App.Dtos.CatBankBranch
 
         public string AbbrName { get; set; }
 
-        public int? IdType { get; set; }
+        public long? IdType { get; set; }
 
         public string IdNumber { get; set; }
 
-        public int? BankId { get; set; }
+        public long? BankId { get; set; }
 
         public bool? IsActive { get; set; }
 

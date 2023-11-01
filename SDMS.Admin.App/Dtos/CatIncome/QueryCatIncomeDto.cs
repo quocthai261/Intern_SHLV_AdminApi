@@ -4,32 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SDMS.Admin.Domain.Entities
+namespace SDMS.Admin.App.Dtos.CatIncome
 {
-    public partial class CatBank
+    public class QueryCatIncomeDto
     {
         public long Id { get; set; }
-
-        public string BankOrgName { get; set; }
-
-        public string BankOrgCode { get; set; }
-
-        public long? IdType { get; set; }
-
-        public string? IdNumber { get; set; }
-
-        public string? AbbrName { get; set; }
-
-        public string? Status { get; set; }
-
+        public string CatIncomeCode { get; set; }
+        public string CatIncomeNameEng { get; set; }
+        public string CatIncomeNameVie { get; set; }
+        public string? Description { get; set; }
         public bool? IsActive { get; set; }
-
         public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
-
         public DateTime? LastUpdatedDate { get; set; }
-
         public long? LastUpdatedBy { get; set; }
     }
 }

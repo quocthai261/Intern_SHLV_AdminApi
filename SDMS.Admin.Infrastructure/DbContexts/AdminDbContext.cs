@@ -244,6 +244,7 @@ public partial class AdminDbContext
                 .HasMaxLength(100)
                 .IsUnicode(false);
         });
+        modelBuilder.HasSequence("SeqCatProvince");
 
 
         modelBuilder.Entity<CatNationality>(entity =>
@@ -409,6 +410,326 @@ public partial class AdminDbContext
 
         modelBuilder.HasSequence("SeqCatRelations");
 
+        modelBuilder.Entity<CatHospital>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.ToTable("CatHospitals");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.AddressId).HasPrecision(19);
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+
+            entity.Property(e => e.HospitalCode).HasMaxLength(20).IsUnicode(false).IsRequired();
+            entity.Property(e => e.HospitalNameEng).HasMaxLength(100).IsUnicode(false).IsRequired();
+            entity.Property(e => e.HospitalNameVie).HasMaxLength(100).IsUnicode(false).IsRequired();
+
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+        });
+
+        modelBuilder.HasSequence("SeqCatHospital");
+
+        modelBuilder.Entity<CatCertiType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatCertiTypePk");
+
+            entity.ToTable("CatCertiTypes");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.CertiTypeName).HasMaxLength(50);
+            entity.Property(e => e.CertiTypeNameVN).HasMaxLength(50);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+        modelBuilder.HasSequence("CatCertiTypes");
+
+        modelBuilder.Entity<CatChargeMode>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatChargeModePk");
+
+            entity.ToTable("CatChargeModes");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.ChargeModeName).HasMaxLength(50).IsRequired();
+            entity.Property(e => e.ChargeModeNameVN).HasMaxLength(50);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.ChargeType).HasMaxLength(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatChargeMode");
+
+        modelBuilder.Entity<CatClaimStatus>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatClaimStatusPk");
+
+            entity.ToTable("CatClaimStatuses");
+
+            entity.Property(e => e.Id).HasPrecision(2);
+            entity.Property(e => e.ClaimStatusName).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.ClaimStatusNameVN).HasMaxLength(100);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatClaimStatus");
+
+        modelBuilder.Entity<CatClaimType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatClaimTypePk");
+
+            entity.ToTable("CatClaimTypes");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.Description).HasMaxLength(200).IsRequired();
+            entity.Property(e => e.ClaimTypeCode).HasMaxLength(200).IsRequired();
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.IsActiveForClaim).HasPrecision(1);
+            entity.Property(e => e.IsRequireDoc).HasPrecision(1).HasDefaultValue(0);
+        });
+
+        modelBuilder.HasSequence("SeqCatClaimType");
+
+        modelBuilder.Entity<CatCommon>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatCommonPk");
+
+            entity.ToTable("CatCommons");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.Code).HasMaxLength(20).IsRequired();
+            entity.Property(e => e.Description).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.Type).HasPrecision(19);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatCommon");
+
+        modelBuilder.Entity<CatDiagnosis>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatDiagnosisPk");
+
+            entity.ToTable("CatDiagnosis");
+
+            entity.Property(e => e.Id).HasPrecision(12);
+            entity.Property(e => e.DiagnoDescription).HasMaxLength(1000);
+            entity.Property(e => e.ParentId).HasPrecision(12);
+            entity.Property(e => e.DiagnoCategory).HasPrecision(2).IsRequired();
+            entity.Property(e => e.DiagnoName).HasMaxLength(1000).IsRequired();
+            entity.Property(e => e.Acceptable).HasMaxLength(1);
+            entity.Property(e => e.IsActive).HasPrecision(1).HasDefaultValue(null);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatDiagnosis");
+
+        modelBuilder.Entity<CatDiagnosisGroup>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatDiagnosisGroupPk");
+
+            entity.ToTable("CatDiagnosisGroups");
+
+            entity.Property(e => e.Id).HasPrecision(2);
+            entity.Property(e => e.CategoryDescription).HasMaxLength(200);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatDiagnosisGroup");
+
+        modelBuilder.Entity<CatDocumentType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatDocumentTypePk");
+
+            entity.ToTable("CatDocumentTypes");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.DocumentTypeName).HasMaxLength(500).IsRequired();
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.IsExternal).HasPrecision(1).HasDefaultValue(0);
+        });
+
+        modelBuilder.HasSequence("SeqCatDocumentType");
+
+        modelBuilder.Entity<CatEmailTemplate>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatEmailTemplatePk");
+
+            entity.ToTable("CatEmailTemplates");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.Code).HasMaxLength(50);
+            entity.Property(e => e.Creator).HasMaxLength(50);
+            entity.Property(e => e.EffectDate).HasColumnType("DATE");
+            entity.Property(e => e.Subject).HasMaxLength(500);
+            entity.Property(e => e.Note).HasMaxLength(255);
+            entity.Property(e => e.Active).HasPrecision(1);
+            entity.Property(e => e.Name).HasMaxLength(250);
+            entity.Property(e => e.Content).HasMaxLength(4000);
+            entity.Property(e => e.EmailTypeGroup).HasMaxLength(64);
+            entity.Property(e => e.EmailType).HasPrecision(2);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatEmailTemplate");
+
+        modelBuilder.Entity<CatFinancialAnalysisConfig>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatFinancialAnalysisConfigPk");
+
+            entity.ToTable("CatFinancialAnalysisConfig");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.Code).HasMaxLength(20);
+            entity.Property(e => e.Description).HasMaxLength(100);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatFinancialAnalysisConfig");
+
+        modelBuilder.Entity<CatIncome>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatIncomePk");
+
+            entity.ToTable("CatIncome");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.CatIncomeCode).HasMaxLength(20);
+            entity.Property(e => e.CatIncomeNameEng).HasMaxLength(100);
+            entity.Property(e => e.CatIncomeNameVie).HasMaxLength(100);
+            entity.Property(e => e.Description).HasMaxLength(200);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatIncome");
+
+        modelBuilder.Entity<CatMarriage>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatMarriagePk");
+
+            entity.ToTable("CatMarriages");
+
+            entity.Property(e => e.Id).HasPrecision(2);
+            entity.Property(e => e.MarriageCode).HasMaxLength(20);
+            entity.Property(e => e.MarriageNameEng).HasMaxLength(100);
+            entity.Property(e => e.MarriageNameVie).HasMaxLength(100);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatMarriage");
+
+        modelBuilder.Entity<CatOccupationGroup>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatOccupationGroupPk");
+
+            entity.ToTable("CatOccupationGroups");
+
+            entity.Property(e => e.Id).HasMaxLength(36);
+            entity.Property(e => e.OccupantionGroupCode).HasMaxLength(10);
+            entity.Property(e => e.OccupantionGroupNameEng).HasMaxLength(150);
+            entity.Property(e => e.OccupantionGroupNameVie).HasMaxLength(150);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatOccupationGroup");
+
+        modelBuilder.Entity<CatOccupation>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatOccupationPk");
+
+            entity.ToTable("CatOccupations");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.OccupationCode).HasMaxLength(50);
+            entity.Property(e => e.OccupationNameVie).HasMaxLength(50);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.OccupationNameEng).HasMaxLength(200);
+            entity.Property(e => e.OccupationNameVieCore).HasMaxLength(200);
+        });
+
+        modelBuilder.HasSequence("SeqCatOccupation");
+
+        modelBuilder.Entity<CatOfficeBranch>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatOfficeBranchPk");
+
+            entity.ToTable("CatOfficeBranchs");
+
+            entity.Property(e => e.Id).HasPrecision(19);
+            entity.Property(e => e.BranchCode).HasMaxLength(20).IsRequired();
+            entity.Property(e => e.BranchName).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.BranchClass).HasMaxLength(1).IsRequired();
+            entity.Property(e => e.Status).HasMaxLength(1).HasDefaultValueSql("0").IsRequired();
+            entity.Property(e => e.BranchType).HasMaxLength(2).HasDefaultValueSql("1").IsRequired();
+            entity.Property(e => e.AbbrName).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.Address1).HasMaxLength(100);
+            entity.Property(e => e.Address2).HasMaxLength(100);
+            entity.Property(e => e.Address3).HasMaxLength(100);
+            entity.Property(e => e.Address4).HasMaxLength(100);
+            entity.Property(e => e.Address5).HasMaxLength(100);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+            entity.Property(e => e.AddressId).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatOfficeBranch");
+
+        //---------------------------------------------
         modelBuilder.Entity<SysMenu>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("SysMenusPk");
@@ -453,8 +774,6 @@ public partial class AdminDbContext
                     .IsRequired()
                     .HasMaxLength(300);
             });
-
-        //pdk-
 
         modelBuilder.Entity<SysUserInformation>(entity =>
         {
