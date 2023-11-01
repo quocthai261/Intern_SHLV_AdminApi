@@ -159,6 +159,8 @@ namespace SDMS.Admin.Api
 
             builder.RegisterAssemblyTypes(typeof(SysMenusExpression).Assembly, typeof(IMapper).Assembly)
                 .AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(SysUserInformationExpression).Assembly, typeof(IMapper).Assembly)
+                .AsImplementedInterfaces();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
