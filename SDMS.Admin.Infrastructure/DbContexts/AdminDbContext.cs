@@ -728,8 +728,6 @@ public partial class AdminDbContext
         });
 
         modelBuilder.HasSequence("SeqCatOfficeBranch");
-
-        //---------------------------------------------
         modelBuilder.Entity<SysMenu>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("SysMenusPk");
@@ -822,13 +820,71 @@ public partial class AdminDbContext
             entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
             entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
         });
+        modelBuilder.Entity<CatPayMode>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatPayModesPk");
+            entity.ToTable("CatPayModes");
 
+            entity.Property(e => e.Id).HasPrecision(2).IsRequired();
+            entity.Property(e => e.PayModeNameEng).HasMaxLength(40).IsRequired();
+            entity.Property(e => e.PayModeType).HasMaxLength(20);
+            entity.Property(e => e.PayModeNameVie).HasMaxLength(100);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+        modelBuilder.Entity<CatPolicyStatus>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatPolicyStatusesPk");
+            entity.ToTable("CatPolicyStatuses");
+
+            entity.Property(e => e.Id).HasPrecision(19).IsRequired();
+            entity.Property(e => e.PolicyStatusCode).HasMaxLength(20);
+            entity.Property(e => e.PolicyStatusName).HasMaxLength(50);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+        modelBuilder.Entity<CatProductPeriod>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatProductPeriodPk");
+            entity.ToTable("CatProductPeriod");
+
+            entity.Property(e => e.Id).HasPrecision(19).IsRequired();
+            entity.Property(e => e.ProductId).HasPrecision(19);
+            entity.Property(e => e.PeriodCode).HasMaxLength(10);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+        modelBuilder.Entity<CatProductStatus>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("CatProductStatusesPk");
+            entity.ToTable("CatProductStatuses");
+
+            entity.Property(e => e.Id).HasPrecision(19).IsRequired();
+            entity.Property(e => e.ProductStatusCode).HasMaxLength(20);
+            entity.Property(e => e.ProductStatusNameEng).HasMaxLength(100);
+            entity.Property(e => e.ProductStatusNameVie).HasMaxLength(100);
+            entity.Property(e => e.IsActive).HasPrecision(1);
+            entity.Property(e => e.CreationDate).HasColumnType("DATE");
+            entity.Property(e => e.CreatedBy).HasPrecision(19);
+            entity.Property(e => e.LastUpdatedDate).HasColumnType("DATE");
+            entity.Property(e => e.LastUpdatedBy).HasPrecision(19);
+        });
+
+        modelBuilder.HasSequence("SeqCatProductStatuses");
+        modelBuilder.HasSequence("SeqCatProductPeriod");
+        modelBuilder.HasSequence("SeqCatPolicyStatuses");
+        modelBuilder.HasSequence("SeqCatPayModes");
         modelBuilder.HasSequence("SeqSysUsers");
-
         modelBuilder.HasSequence("SeqSysUserInformations");
-
-        //pdk-end
-
         modelBuilder.HasSequence("SeqCatProvince");
         modelBuilder.HasSequence("SeqSysMenus");
 

@@ -71,6 +71,10 @@ using SDMS.Admin.App.Dtos.CatMarriage;
 using SDMS.Admin.App.Dtos.CatOccupationGroup;
 using SDMS.Admin.App.Dtos.CatOccupation;
 using SDMS.Admin.App.Dtos.CatOfficeBranch;
+using SDMS.Admin.App.Dtos.CatPayMode;
+using SDMS.Admin.App.Dtos.CatPolicyStatus;
+using SDMS.Admin.App.Dtos.CatProductPeriod;
+using SDMS.Admin.App.Dtos.CatProductStatus;
 
 namespace SDMS.Admin.Api
 {
@@ -296,7 +300,10 @@ namespace SDMS.Admin.Api
             services.AddBaseControllerHandlers<CatOccupationGroup, QueryCatOccupationGroupDto, CreateCatOccupationGroupDto, UpdateCatOccupationGroupDto>();
             services.AddBaseControllerHandlers<CatOccupation, QueryCatOccupationDto, CreateCatOccupationDto, UpdateCatOccupationDto>();
             services.AddBaseControllerHandlers<CatOfficeBranch, QueryCatOfficeBranchDto, CreateCatOfficeBranchDto, UpdateCatOfficeBranchDto>();
-
+            services.AddBaseControllerHandlers<CatPayMode, QueryCatPayModeDto, CreateCatPayModeDto, UpdateCatPayModeDto>();
+            services.AddBaseControllerHandlers<CatPolicyStatus, QueryCatPolicyStatusDto, CreateCatPolicyStatusDto, UpdateCatPolicyStatusDto>();
+            services.AddBaseControllerHandlers<CatProductPeriod, QueryCatProductPeriodDto, CreateCatProductPeriodDto, UpdateCatProductPeriodDto>();
+            services.AddBaseControllerHandlers<CatProductStatus, QueryCatProductStatusDto, CreateCatProductStatusDto, UpdateCatProductStatusDto>();
             services.AddBaseControllerHandlers < SyncJob, QuerySyncJobDto, CreateSyncJobDto, UpdateSyncJobDto > ();
             services.AddBaseControllerHandlers < SysApplication, QuerySysApplicationDto, CreateSysApplicationDto, UpdateSysApplicationDto > ();
             services.AddBaseControllerHandlers < SysLanguage, QuerySysLanguageDto, CreateSysLanguageDto, UpdateSysLanguageDto > ();
@@ -306,12 +313,10 @@ namespace SDMS.Admin.Api
             services.AddBaseControllerHandlers < SysPermission, QuerySysPermissionDto, CreateSysPermissionDto, UpdateSysPermissionDto > ();
             services.AddBaseControllerHandlers < SysRole, QuerySysRoleDto, CreateSysRoleDto, UpdateSysRoleDto > ();
             services.AddBaseControllerHandlers < SysSetting, QuerySysSettingDto, CreateSysSettingDto, UpdateSysSettingDto > ();
-            services.AddBaseControllerHandlers < SysUserLoginHistory, QuerySysUserLoginHistoryDto, CreateSysUserLoginHistoryDto, UpdateSysUserLoginHistoryDto > ();
-
-            //pdk-
+            services.AddBaseControllerHandlers < SysUserLoginHistory, QuerySysUserLoginHistoryDto, CreateSysUserLoginHistoryDto, UpdateSysUserLoginHistoryDto>();
             services.AddBaseControllerHandlers<SysUserInformation, QuerySysUserInformationDto, CreateSysUserInformationDto, UpdateSysUserInformationDto>();
             services.AddBaseControllerHandlers<SysUser, QuerySysUserDto, CreateSysUserDto, UpdateSysUserDto>();
-            //pdk-end
+
 
         }
 
